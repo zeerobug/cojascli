@@ -7,8 +7,6 @@
 With the increasing number of javascript libraries for data visualization, and the benefits and flaws of each of them, programmers are often obliged to use several libraries for the same project. These heterogeneity adds unnecessary complexity to the code and can lead to problems.
 We developped this package as an intent to define a standard for data visualization with a system of pluggable adaptors for external libraries.
 
-### 
-
 #### Quick start:
 `npm install cojasclib --save`
 
@@ -49,3 +47,6 @@ chart.render(chartVendorTranslatorPlugin).then(res => {
  * x: the absciss value
  * y: the ordinate value (if not set defaults to label)
  * opts: todo
+
+# Plugin Development
+> TODO

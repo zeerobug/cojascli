@@ -1,6 +1,13 @@
 'use strict';
 
-const expect = require('chai').expect;
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+
+chai.use(chaiAsPromised);
+
+// Then either:
+var expect = chai.expect;
+
 const Cojascli = require('../lib');
 
 describe('#chartClass tests', function () {
@@ -8,7 +15,8 @@ describe('#chartClass tests', function () {
     let chart = new Cojascli.Chart();
     let serie = new Cojascli.Serie({name: 'Test'});
     chart.setSerie(serie);
-    expect(chart.get()).to.have.property('series');
+    return expect(chart.render('chartjs')).to.eventually.have.property('datasets');
+    
   });
   it('Should not accept 2 series with the same name', function () {
     let chart = new Cojascli.Chart();
@@ -37,12 +45,9 @@ describe('#chartClass tests', function () {
   it('Should take a plugin as argument and return a valid object', function () {
     let chart = new Cojascli.Chart();
     const serie = new Cojascli.Serie({name: 'Test'});
-    let res = chart.get(() => {
-      return chart.result;
-    })
-    expect(chart.result.series.length)
-      .to
-      .equal(0);
+    serie.setDataPoint({ x: 1, label: 'test' });
+    chart.setSerie(serie);
+    expect(chart.render('chartjs')).to.eventually.have.property('datasets');
   });
 
 });
