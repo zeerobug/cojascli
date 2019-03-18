@@ -1,0 +1,35 @@
+{
+  "name": "cojasclib",
+  "version": "0.1.0",
+  "description": "COmmon JAvascript Standard for Charting LIbraries",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeerobug/cojascli.git"
+  },
+  "keywords": [
+    "chart",
+    "graph",
+    "javascript",
+    "utility"
+  ],
+  "author": "Thomas Vié",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeerobug/cojascli/issues"
+  },
+  "homepage": "https://github.com/zeerobug/cojascli#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}
