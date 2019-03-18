@@ -1,5 +1,5 @@
-# COJASCLI
-> COmmon JAvascript Standard for Charting LIbraries
+# COJASCLIB
+> COmmon JAvascript Standard for Charting LIBraries
 
 *Note: This package is in active development and therefore should not be used until further notice*
 
@@ -10,25 +10,26 @@ We developped this package as an intent to define a standard for data visualizat
 ### 
 
 #### Quick start:
-`npm install cojascli --save`
+`npm install cojasclib --save`
 
 ```javascript
-import ChartClass from 'chartClass'
-import ChartSerie from 'chartSerie'
+let Cojasclib = require('Cojasclib')
 
-let chart = new ChartClass()
-let serie = new ChartSerie({ name: 'chart name', opts: {})
+let chart = new Cojasclib.Chart()
+let serie = new Cojasclib.Serie({ name: 'serie name', opts: {}})
 
 serie.setDataPoint({ label: '', x: '', y: '', opts: '' })
 
 chart.setSerie(serie.get())
-result = chart.get(chartVendorTranslator)
+chart.render(chartVendorTranslatorPlugin).then(res => {
+  chartValues=res
+)
             
 ```
 
  #### chart Object
  
- setserie(): Adds serie to final chart object. can be done several time
+ setSerie(): Adds serie to final chart object. can be done several time
  
  
  #### chart serie object:
@@ -46,5 +47,5 @@ result = chart.get(chartVendorTranslator)
  #### data point
  * label: the x label
  * x: the absciss value
- * y: the ordinate value
+ * y: the ordinate value (if not set defaults to label)
  * opts: todo
