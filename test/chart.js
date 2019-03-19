@@ -47,7 +47,7 @@ describe('#chartClass tests', function () {
     const serie = new Cojascli.Serie({name: 'Test'});
     serie.setDataPoint({ x: 1, label: 'test' });
     chart.setSerie(serie);
-    expect(chart.render('chartjs')).to.eventually.have.property('datasets');
+    return expect(chart.render('chartjs')).to.eventually.have.property('datasets');
   });
 
 });
