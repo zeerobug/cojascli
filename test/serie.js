@@ -14,14 +14,14 @@ describe('#chartSerie tests', function() {
     expect(() => {
       new Cojascli.Serie({});
     }).to.throw('Missing name');
-	});
-	it('Should be able to store ' + occurences + ' points without problem', function() {
-		let serie = new Cojascli.Serie({ name: 'Test' });
-		for (let index = 0; index < occurences; index++) {
-			serie.setDataPoint({ x: index, label: index });
-		}
-		let res = serie.get();
-		expect(res.data.length).to.equal(occurences);
+  });
+  it('Should be able to store ' + occurences + ' points without problem', function() {
+    let serie = new Cojascli.Serie({ name: 'Test' });
+    for (let index = 0; index < occurences; index++) {
+      serie.setDataPoint({ x: index, label: index });
+    }
+    let res = serie.get();
+    expect(res.data.length).to.equal(occurences);
   });
   it('Should populate the missing values with the option fillNullDateValues', function() {
     let serie = new Cojascli.Serie({ name: 'Test', opts: { fillNullDateValues: true } });

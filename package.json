@@ -32,5 +32,9 @@
   "dependencies": {
     "chai-as-promised": "^7.1.1",
     "moment": "^2.24.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
