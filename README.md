@@ -3,15 +3,15 @@
 
 *Note: This package is in active development and therefore should not be used until further notice*
 
-### Introduction
+## Introduction
 With the increasing number of javascript libraries for data visualization, and the benefits and flaws of each of them, programmers are often obliged to use several libraries for the same project. These heterogeneity adds unnecessary complexity to the code and can lead to problems.
 We developped this package as an intent to define a standard for data visualization with a system of pluggable adaptors for external libraries.
 
-#### Quick start:
+## Quick start:
 `npm install cojasclib --save`
 
 ```javascript
-let Cojasclib = require('Cojasclib')
+let Cojasclib = require('cojasclib')
 
 let chart = new Cojasclib.Chart()
 let serie = new Cojasclib.Serie({ name: 'serie name', opts: {}})
@@ -25,12 +25,12 @@ chart.render(chartVendorTranslatorPlugin).then(res => {
             
 ```
 
- #### chart Object
+ ### chart Object
  
  setSerie(): Adds serie to final chart object. can be done several time for multi-series
  
  
- #### chart serie object:
+ ### chart serie object:
  * name: name of the serie. Appears as serie legend
  * opts: 
    * sort: true is sorted, false not
@@ -45,12 +45,12 @@ chart.render(chartVendorTranslatorPlugin).then(res => {
    * grouped: if 2 points have the same label, they are cumulated. 
  
  
- #### data point
+ ### data point
  * x: the absciss value
  * label: the x label (defaults to x)
  * y: the ordinate value (defaults to label)
  * z: the z coordinate for a 3d point (defaults to none)
  * opts: datapoint options, passed translarently to the graph plugin
 
-# Plugin Development
+## Plugin Development
 > TODO
