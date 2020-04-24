@@ -24,9 +24,8 @@
   "homepage": "https://github.com/zeerobug/cojascli#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-disable": "^2.0.1",
     "mocha": "^6.0.2",
     "prettier-eslint": "^9.0.0"
   },
@@ -35,6 +34,7 @@
   },
   "dependencies": {
     "chai-as-promised": "^7.1.1",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0"
   },
   "directories": {
