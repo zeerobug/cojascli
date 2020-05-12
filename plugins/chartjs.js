@@ -10,6 +10,8 @@ let dictionary = {
     'scales.xAxes[0].ticks.fontColor',
     'scales.yAxes[0].ticks.fontColor',
   ],
+  reverse: 'scales.yAxes[0].ticks.reverse',
+  ticksMinimum: 'ticks.min',
   yDisplay: 'scales.yAxes[0].display',
   xDisplay: 'scales.xAxes[0].display',
   xDisplayGrid: 'scales.xAxes[0].gridLines.display',
@@ -50,8 +52,9 @@ const chartjsPlugin = (chartClassObject) => {
           pointBackgroundColors.push(point.options.color);
         }
       }
-      if (chartClassObject.options.graphType == '3D') {// 3D case
-        dataset.data.push({x: point.x, y: point.y, r: point.z});
+      if (chartClassObject.options.graphType == '3D') {
+        // 3D case
+        dataset.data.push({ x: point.x, y: point.y, r: point.z });
       } else dataset.data.push(point.y);
     });
 
