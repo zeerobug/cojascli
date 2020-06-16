@@ -1,6 +1,6 @@
 {
   "name": "cojasclib",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "COmmon JAvascript Standard for Charting LIbraries",
   "main": "lib/index.js",
   "scripts": {
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "chai-as-promised": "^7.1.1",
+    "csv-writer": "^1.6.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0"
   },

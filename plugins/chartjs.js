@@ -33,8 +33,8 @@ const chartjsPlugin = (chartClassObject) => {
       backgroundColor: serie.color || chartUtils.getRandomColor(),
     };
     // We merge options
-    if (serie.opts) {
-      dataset = _.merge(dataset, serie.opts);
+    if (serie.options) {
+      dataset = _.merge(dataset, serie.options);
       // Default values here
       dataset.backgroundColor = dataset.backgroundColor
         ? dataset.backgroundColor
