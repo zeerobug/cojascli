@@ -4,8 +4,8 @@ const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 const csvPlugin = (chartClassObject, options = {}) => {
   let [headers, records] =
     options && options.horizontal
-      ? generateArrayOfObject(chartClassObject)
-      : generateArrayOfObject(chartClassObject);
+      ? generateHorizontalArrayOfObject(chartClassObject)
+      : generateVerticalArrayOfObject(chartClassObject);
   let csvHeaders = headers.map((h) => {
     return { id: h, title: h };
   });
@@ -18,7 +18,31 @@ const csvPlugin = (chartClassObject, options = {}) => {
   return text;
 };
 
-function generateArrayOfObject(chartClassObject) {
+function generateHorizontalArrayOfObject(chartClassObject) {
+  let records = [];
+  let etiqs = chartClassObject.series.map((o) => o.name);
+  let headersObj = {};
+
+  // foreach etiqs, we search the series and create the columns
+  etiqs.forEach((etiq) => {
+    let m = {};
+    m.Serie = etiq;
+    chartClassObject.series
+      .filter((o) => o.name == etiq)
+      .forEach((s) => {
+        s.points.forEach((p) => {
+          let l = p.label ? p.label : p.x;
+          headersObj[l] = 1;
+          m[l] = p.y;
+        });
+        records.push(m);
+      });
+  });
+  let headers = ['Serie', ...Object.keys(headersObj)];
+  return [headers, records];
+}
+
+function generateVerticalArrayOfObject(chartClassObject) {
   let records = [];
   chartClassObject.series.forEach((o) => {
     let res = {};

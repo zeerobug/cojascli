@@ -28,6 +28,7 @@ describe('#CSV plugin tests', function() {
     serie = new Cojascli.Serie(serie2);
     chart.setSerie(serie);
     let res = await chart.render('csvPlugin', { horizontal: true });
-    expect(res.length).to.equal(79);
+    console.log(res);
+    expect(res.split('\n').length).to.equal('3');
   });
 });

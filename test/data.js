@@ -7,7 +7,10 @@ module.exports = {
       borderWidth: 2,
       pointRadius: 0,
     },
-    data: [{ x: 1, y: 2, label: 'toto' }, { x: 12, y: 24, label: 'titi' }],
+    data: [
+      { x: '2001', y: 2, label: '2001' },
+      { x: '2002', y: 24, label: '2002' },
+    ],
   },
   serie2: {
     name: 'Loss',
@@ -17,6 +20,13 @@ module.exports = {
       borderWidth: 2,
       pointRadius: 0,
     },
-    data: [{ x: 1, y: 2, label: 'tutu' }, { x: 12, y: 24, label: 'tata' }],
+    data: [
+      { x: '1984', y: 231, label: '1984' },
+      {
+        x: '1985',
+        y: 242,
+        label: '1985',
+      },
+    ],
   },
 };
