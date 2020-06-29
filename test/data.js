@@ -29,4 +29,15 @@ module.exports = {
       },
     ],
   },
+  pieSerie: {
+    name: 'pie',
+    data: [
+      { x: 'Oct', y: 10, options: { color: '#8EC4D5' } },
+      { x: 'Nov', y: 12, options: { color: '#8EC4D5' } },
+      { x: 'Dec', y: 9, options: { color: '#8EC4D5' } },
+      { x: 'Jan', y: 15, options: { color: '#8EC4D5' } },
+      { x: 'Feb', y: 21, options: { color: '#8EC4D5' } },
+      { x: 'Mar', y: 23, options: { color: '#C7E84D' } },
+    ],
+  },
 };
