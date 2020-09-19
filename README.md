@@ -22,7 +22,7 @@ let serie = new Cojasclib.Serie({ name: 'serie name', options: serieOptions)
 serie.setDataPoint({ x: '', y: '', label: '', options: {} })
 
 chart.setSerie(serie)
-chart.render("chartjs", renderinOptions).then(res => {
+chart.render("chartjs", renderingOptions).then(res => {
   this.renderChart(res[0], res[1]);
 )
 
@@ -34,7 +34,7 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
 
 > Note: Sort can be set at chartSerie or at chartObject at rendering
 
-- renderinOptions:
+- renderingOptions:
   - sort: true is sorted, false not
   - order: defaults to numeric sort
     - 'array': sort according to the array
