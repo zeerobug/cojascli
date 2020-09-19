@@ -113,6 +113,26 @@ describe('#chartSerie tests', function() {
     expect(res.points[0].value).to.equal(123);
     expect(res.points[1].value).to.equal(3);
   });
+  it('Should sort points according to a function', function() {
+    // TODO
+
+    let serie = new Cojascli.Serie({
+      name: 'Test',
+      options: { sort: true, order: sortFunction, direction: 'ASC' },
+    });
+
+    serie.setDataPoint({ x: 'Very Good 10', y: 87 });
+    serie.setDataPoint({ x: 'Not Good 1', y: 2 });
+    serie.setDataPoint({ x: '7', y: 15 });
+    serie.setDataPoint({ x: '6', y: 13 });
+    serie.setDataPoint({ x: '4', y: 123 });
+    serie.setDataPoint({ x: '5', y: 12 });
+    let res = serie.get();
+    expect(res.points[0].value).to.equal(2);
+    expect(res.points[1].value).to.equal(123);
+    expect(res.points[5].value).to.equal(87);
+  });
+
   it('Should not give a label when there is none', function() {
     let serie = new Cojascli.Serie({
       name: 'Test Date',
@@ -132,3 +152,9 @@ describe('#chartSerie tests', function() {
     expect(res.points[1].label).to.equal('maurice');
   });
 });
+
+function sortFunction(elt) {
+  if (elt.x.includes('Not')) return 1;
+  else if (elt.x.includes('Very')) return 10;
+  else return parseInt(elt.x);
+}

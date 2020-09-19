@@ -19,7 +19,7 @@ describe('#CSV plugin tests', function() {
     serie = new Cojascli.Serie(serie2);
     chart.setSerie(serie);
     let res = await chart.render('csvPlugin');
-    expect(res.length).to.equal(79);
+    expect(res.length).to.equal(144);
   });
   it('Should return a horizontal csv', async function() {
     let chart = new Cojascli.Chart();
@@ -28,14 +28,13 @@ describe('#CSV plugin tests', function() {
     serie = new Cojascli.Serie(serie2);
     chart.setSerie(serie);
     let res = await chart.render('csvPlugin', { horizontal: true });
-
-    expect(res.split('\n').length).to.equal('3');
+    expect(res.split('\n').length).to.equal(4);
   });
-  it.only('Should work with pie type series', async function() {
+  it('Should work with pie type series', async function() {
     let chart = new Cojascli.Chart();
     let serie = new Cojascli.Serie(pieSerie);
     chart.setSerie(serie);
     let res = await chart.render('csvPlugin', { horizontal: true });
-    console.log(res);
+    expect(res.split('\n').length).to.equal(3);
   });
 });
