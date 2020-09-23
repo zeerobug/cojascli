@@ -44,6 +44,7 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
   - direction: 'ASC' or 'DESC'. Defaults to 'ASC'
   - noConsolidation: true, skips consolidation (only for multiple series). Consolidation populates with empty values the points that are set in one serie and not in another
   - missingPointOptions: In case of consolidation, the options that are used for the created points
+  - sortOrdinates: if true, sorts by ordinate (y values)
 
 #### chart serie object:
 
