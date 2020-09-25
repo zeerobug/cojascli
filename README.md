@@ -68,7 +68,8 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
 - label: the x label (defaults to x)
 - y: the ordinate value (defaults to label)
 - z: the z coordinate for a 3d point (defaults to none)
-- opts: datapoint options, passed transparently to the graph plugin
+- options:
+  - color: Set this to change a single point color (`color: "#C7E84D"`)
 
 # Available plugins
 

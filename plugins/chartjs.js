@@ -27,10 +27,13 @@ const chartjsPlugin = (chartClassObject) => {
 
   // Adding series
   chartClassObject.series.forEach((serie) => {
+    console.log('series: ', serie);
     let dataset = {
       data: [],
       label: serie.name,
       backgroundColor: serie.color || chartUtils.getRandomColor(),
+      type: serie.type ? serie.type : null,
+      order: serie.order ? serie.order : null,
     };
     // We merge options
     if (serie.options) {
@@ -43,6 +46,7 @@ const chartjsPlugin = (chartClassObject) => {
         ? dataset.borderColor
         : chartUtils.getRandomColor();
     }
+    let n = 0;
     serie.points.forEach((point) => {
       if (!labelsDone) ret.labels.push(point.label ? point.label : point.x);
       if (point.options) {
@@ -50,6 +54,8 @@ const chartjsPlugin = (chartClassObject) => {
         // Colors
         if (point.options.color) {
           pointBackgroundColors.push(point.options.color);
+        } else if (serie.options.backgroundColor) {
+          pointBackgroundColors.push(serie.options.backgroundColor[n++]);
         }
       }
       if (chartClassObject.options.graphType == '3D') {
