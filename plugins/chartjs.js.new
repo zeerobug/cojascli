@@ -1,0 +1,76 @@
+const _ = require('lodash');
+let chartUtils = require('../lib/chartUtils');
+
+// Chartjs plugin
+let dictionary = {
+  legendDisplay: 'legend.display',
+  dummyTest: 'dummy[0].test',
+
+  defaultFontColor: [
+    'scales.xAxes[0].ticks.fontColor',
+    'scales.yAxes[0].ticks.fontColor',
+  ],
+  reverse: 'scales.yAxes[0].ticks.reverse',
+  ticksMinimum: 'ticks.min',
+  yDisplay: 'scales.yAxes[0].display',
+  xDisplay: 'scales.xAxes[0].display',
+  xDisplayGrid: 'scales.xAxes[0].gridLines.display',
+};
+
+const chartjsPlugin = (chartClassObject) => {
+  let ret = {};
+  let pointBackgroundColors = [];
+  ret.datasets = [];
+  ret.labels = [];
+  ret.options = chartClassObject.options;
+  let labels = [];
+  // Adding series
+  chartClassObject.series.forEach((serie) => {
+    let dataset = {
+      data: serie.points,
+      label: serie.name,
+      // backgroundColor: serie.color || chartUtils.getRandomColor(),
+      type: serie.type ? serie.type : null,
+      order: serie.order ? serie.order : null,
+      options: serie.options,
+      backgroundColor: serie.options.backgroundColor
+        ? serie.options.backgroundColor
+        : chartUtils.getRandomColor(),
+      borderColor: serie.options.borderColor
+        ? serie.options.borderColor
+        : chartUtils.getRandomColor(),
+    };
+    labels = _.map(serie.points, (p) => p.x);
+    ret.labels = _.uniq(labels);
+    serie.points.forEach((point) => {
+      if (point.options) {
+        // We process point options
+        // Colors
+        if (point.options.color) {
+          pointBackgroundColors.push(point.options.color);
+        } else if (serie.options.backgroundColor) {
+          //pointBackgroundColors.push(serie.options.backgroundColor[n++]);
+        }
+      }
+      if (chartClassObject.options.graphType == '3D') {
+        // 3D case
+        dataset.data.push({ x: point.x, y: point.y, r: point.z });
+      } else dataset.data.push(point.y);
+    });
+
+    // We merge with points properties
+    if (pointBackgroundColors.length > 0)
+      dataset.backgroundColor = pointBackgroundColors;
+
+    //else dataset.backgroundColor = serie.color || chartUtils.getRandomColor();
+    ret.datasets.push(dataset);
+  });
+
+  let chartOptions = chartUtils.transformOptions(
+    chartClassObject.options,
+    dictionary
+  );
+  return [ret, chartOptions];
+};
+
+module.exports = chartjsPlugin;
