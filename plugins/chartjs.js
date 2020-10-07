@@ -27,7 +27,7 @@ const chartjsPlugin = (chartClassObject) => {
 
   // Adding series
   chartClassObject.series.forEach((serie) => {
-    console.log('series: ', serie);
+    pointBackgroundColors = [];
     let dataset = {
       data: [],
       label: serie.name,
@@ -44,7 +44,10 @@ const chartjsPlugin = (chartClassObject) => {
         : chartUtils.getRandomColor();
       dataset.borderColor = dataset.borderColor
         ? dataset.borderColor
-        : chartUtils.getRandomColor();
+        : dataset.backgroundColor;
+      if (serie.options.layer) {
+        dataset.order = serie.options.layer;
+      }
     }
     let n = 0;
     serie.points.forEach((point) => {
