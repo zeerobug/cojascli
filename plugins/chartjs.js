@@ -68,14 +68,13 @@ const chartjsPlugin = (chartClassObject) => {
     });
 
     // We merge with points properties
-    if (pointBackgroundColors.length > 0)
+    if (pointBackgroundColors.length > 0 && serie.options.type != 'radar')
       dataset.backgroundColor = pointBackgroundColors;
 
     //else dataset.backgroundColor = serie.color || chartUtils.getRandomColor();
     labelsDone = true;
     ret.datasets.push(dataset);
   });
-
   let chartOptions = chartUtils.transformOptions(
     chartClassObject.options,
     dictionary
