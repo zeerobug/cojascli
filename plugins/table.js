@@ -1,10 +1,9 @@
 const tablePlugin = (chartClassObject, options) => {
+  let ret = {};
   if (options.addRank)
     chartClassObject.series[0].points.map((elt, i) => (elt.r = i + 1));
-  return [
-    chartClassObject.series[0].points,
-    { ...chartClassObject.options, ...options },
-  ];
+  ret.datasets = chartClassObject.series;
+  return [ret, { ...chartClassObject.options, ...options }];
 };
 
 module.exports = tablePlugin;
