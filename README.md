@@ -61,6 +61,16 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
   - dateFormat: defines the output of the label if it is moment object. see Moment formatting
   - cumulative: adds each value of serie to previous one
   - grouped: if 2 points have the same label, they are cumulated.
+  - limitedPoints: Allow to limit the number of points and define a point with "name" as label and sum of remaining points as value
+  ```js
+  limitedPoints = {
+    max: x,
+    name: 'Others',
+  };
+  ```
+
+```
+
 
 #### Data point
 
@@ -95,3 +105,4 @@ The idea is that the same settings will work with any Library
 | yDisplayGrid     | Bool   | If yaxis grid should be displayed                      |
 
 > TODO
+```

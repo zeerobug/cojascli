@@ -1,6 +1,6 @@
 {
   "name": "cojasclib",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "COmmon JAvascript Standard for Charting LIbraries",
   "main": "lib/index.js",
   "scripts": {
