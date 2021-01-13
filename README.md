@@ -45,6 +45,10 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
   - noConsolidation: true, skips consolidation (only for multiple series). Consolidation populates with empty values the points that are set in one serie and not in another
   - missingPointOptions: In case of consolidation, the options that are used for the created points
   - sortOrdinates: if true, sorts by ordinate (y values)
+  - yLabels: Array of labels that defines the order they have to appear. For example: ["fruits", "Vegetables", "Meat"]
+  - labelFunction: String modifier function applied to x Labels before displaying. Ex:
+    `labelFunction: label => { return label.split("-")[1]; }`
+  - lengthXMax: INTEGER Max Number of character for splitting x labels, splitting is done on spaces
 
 #### chart serie object:
 
@@ -61,16 +65,20 @@ setSerie(): Adds serie to final chart object. can be done several time for multi
   - dateFormat: defines the output of the label if it is moment object. see Moment formatting
   - cumulative: adds each value of serie to previous one
   - grouped: if 2 points have the same label, they are cumulated.
-  - limitedPoints: Allow to limit the number of points and define a point with "name" as label and sum of remaining points as value
-  ```js
-  limitedPoints = {
-    max: x,
-    name: 'Others',
-  };
-  ```
+  - limitedPoints: Allow to limit the number of points and define a point with "name" as label and the sum of remaining points y as value
+
+```javascript
+  options {
+      ...
+    limitedPoints = {
+        max: x,
+        name: 'Others',
+    }
+    ...
+  }
+  ;
 
 ```
-
 
 #### Data point
 
@@ -105,4 +113,7 @@ The idea is that the same settings will work with any Library
 | yDisplayGrid     | Bool   | If yaxis grid should be displayed                      |
 
 > TODO
+
+```
+
 ```
